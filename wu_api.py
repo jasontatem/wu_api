@@ -12,9 +12,9 @@ def yesterday_yymmdd():
 
 
 class WUApi(object):
-    def __init__(self, api_key, default_loc='CA/San_Francisco', base_url='https://api.wunderground.com/api/'):
+    def __init__(self, api_key, default_loc='CA/San_Francisco', base_url='https://api.wunderground.com/api/', language='EN'):
         self.api_key = api_key
-        self.base_url = base_url + self.api_key
+        self.base_url = base_url + self.api_key + '/lang:{0}'.format(language)
         self.default_loc = default_loc
 
     def call_wu_api(self, features, location=None):
