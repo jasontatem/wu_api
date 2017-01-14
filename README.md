@@ -36,7 +36,7 @@ Get current conditions for a different location:
 7
 ```
 
-Get historical data for June 1, 2016 for Singapore:
+Get historical data for June 1, 2016 for Singapore, note different names for temperature keys (tempi / tempm versus temp_f / temp_c):
 ```python
 >>> data = wu.get_history(location='Singapore/Singapore', hist_date='20160601')
 >>> data['history']['observations'][0]['date']
