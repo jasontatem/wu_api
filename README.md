@@ -4,7 +4,7 @@
 
 This is intended to be a convenience layer and assumes some familiarity with the API exposed by weatherunderground.com.  Limited functionality will be expaneded over time.
 
-More information about the underlying API, as well as information about obtaining an API key, can be found at [link](https://www.wunderground.com/weather/api/).
+More information about the underlying API, as well as information about obtaining an API key, can be found here [link](https://www.wunderground.com/weather/api/). This page[link](https://www.wunderground.com/weather/api/d/docs?d=data/index&MR=1) is very useful as it contains examples of the expected data formats for various options.
 
 ## General Usage
 
