@@ -1,23 +1,25 @@
 import requests
-import time
 import datetime
 import logging
 
 
-def epoch_to_yyyymmdd(epoch_time):
-    return time.strftime('%Y%m%d', time.gmtime(epoch_time))
-
-
 def today_yyyymmdd():
-    return epoch_to_yyyymmdd(time.time())
+    return datetime.date.today().strftime('%Y%m%d')
+
+
+def yesterday_yymmdd():
+    return (datetime.date.today() - datetime.timedelta(1)).strftime('%Y%m%d')
 
 
 class WUApi(object):
-    def __init__(self, api_key, base_url='https://api.wunderground.com/api/'):
+    def __init__(self, api_key, default_loc='CA/San_Francisco', base_url='https://api.wunderground.com/api/'):
         self.api_key = api_key
         self.base_url = base_url + self.api_key
+        self.default_loc = default_loc
 
-    def call_wu_api(self, features, location):
+    def call_wu_api(self, features, location=None):
+        if location is None:
+            location = self.default_loc
         if type(features) == str:
             features_url = '/{0}'.format(features)
         elif type(features) == list:
@@ -29,13 +31,13 @@ class WUApi(object):
         logging.debug('Calling WU API with URL: {0}'.format(full_url))
         return requests.get(full_url).json()
 
-    def get_conditions(self, location):
+    def get_conditions(self, location=None):
         return self.call_wu_api('conditions', location)
 
-    def get_history(self, location, hist_date=today_yyyymmdd()):
+    def get_history(self, location=None, hist_date=today_yyyymmdd()):
         return self.call_wu_api('history_{0}'.format(hist_date), location)
 
-    def get_history_daterange(self, location, start_date, end_date):
+    def get_history_daterange(self, location=None, start_date=yesterday_yymmdd(), end_date=today_yyyymmdd()):
         start_dt = datetime.datetime.strptime(start_date, '%Y%m%d')
         end_dt = datetime.datetime.strptime(end_date, '%Y%m%d')
         query_dt = start_dt
