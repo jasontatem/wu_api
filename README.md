@@ -30,16 +30,24 @@ Get current conditions at your default location:
 Get current conditions for a different location:
 ```python
 >>> data = wu.get_conditions(location='Ireland/Dublin')
+>>> data['current_observation']['temp_f']
+45
+>>> data['current_observation']['temp_c']
+7
 ```
 
 Get historical data for June 1, 2016 for Singapore:
 ```python
 >>> data = wu.get_history(location='Singapore/Singapore', hist_date='20160601')
+>>> data['history']['observations'][0]['date']
+{u'mday': u'01', u'hour': u'00', u'min': u'00', u'mon': u'06', u'pretty': u'12:00 AM SGT on June 01, 2016', u'year': u'2016', u'tzname': u'Asia/Singapore'}
 >>> data['history']['observations'][0]['tempi']
 u'82.4'
+>>> data['history']['observations'][0]['tempm']
+u'28.0'
 ```
 
-Accumulate a range of days of historical data:
+Accumulate a range of days of historical data, returns a list of objects identical to those in the previous example:
 ```python
 >>> data = wu.get_history_daterange(start_date='20160601', end_date='20160608')
 ```
