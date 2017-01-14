@@ -57,3 +57,8 @@ Accumulate a range of days of historical data, returns a list of objects identic
 test_env.py contains example code for creating an API session.  Copy config_sample.cfg to test_config.cfg and edit th
 e api_secret and default_loc values as appropriate.
 
+## Security Warning
+
+For whatever reason, Weather Underground's API requires the API key to be included in the URL of every request.  If logging is enabled (as it is in test_env.py), the API key may be written to log files every time an API call occurs.
+
+Though the use of HTTPS (which this class does, don't modify base_url without a good reason to) mitigates some of the issues with putting the one and only security key into the URL, there are substantial additional risks of data leakage including the API key.  It is best to consider a WU API token at high risk of compromise and monitor its usage closely.  Avoid accessing WU API URLs via browsers to prevent having the API key available in browser URL history. 
