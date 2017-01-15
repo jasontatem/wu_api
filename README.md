@@ -6,6 +6,10 @@ This is intended to be a convenience layer and assumes some familiarity with the
 
 More information about the underlying API, as well as information about obtaining an API key, can be found [here](https://www.wunderground.com/weather/api/). This [page](https://www.wunderground.com/weather/api/d/docs?d=data/index&MR=1) is very useful as it contains examples of the expected data formats for various options.
 
+## Requirements
+
+The only exteral library is requests
+
 ## General Usage
 
 ### To create an API client session:
