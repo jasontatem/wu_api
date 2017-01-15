@@ -26,14 +26,14 @@ Default location can be specified in a variety of formats.  See example default_
 
 Get current conditions at your default location: 
 ```python
->>> data = wu.get_conditions()
+>>> data = wu.conditions()
 >>> data['current_observation']['temp_f']
 32.5
 ```
 
 Get current conditions for a different location:
 ```python
->>> data = wu.get_conditions(location='Ireland/Dublin')
+>>> data = wu.conditions(location='Ireland/Dublin')
 >>> data['current_observation']['temp_f']
 45
 >>> data['current_observation']['temp_c']
@@ -42,7 +42,7 @@ Get current conditions for a different location:
 
 Get historical data for June 1, 2016 for Singapore, note different names for temperature keys (tempi / tempm versus temp_f / temp_c), this behavior appears to depend on the location queried:
 ```python
->>> data = wu.get_history(location='Singapore/Singapore', hist_date='20160601')
+>>> data = wu.history(location='Singapore/Singapore', hist_date='20160601')
 >>> data['history']['observations'][0]['date']
 {u'mday': u'01', u'hour': u'00', u'min': u'00', u'mon': u'06', u'pretty': u'12:00 AM SGT on June 01, 2016', u'year': u'2016', u'tzname': u'Asia/Singapore'}
 >>> data['history']['observations'][0]['tempi']
@@ -53,7 +53,7 @@ u'28.0'
 
 Accumulate a range of days of historical data, returns a list of objects identical to those in the previous example:
 ```python
->>> data = wu.get_history_daterange(start_date='20160601', end_date='20160608')
+>>> data = wu.history_daterange(start_date='20160601', end_date='20160608')
 ```
 
 Other features with wrappers in the class:
@@ -68,11 +68,10 @@ Other features with wrappers in the class:
 
 ## Example Code
 
-test_env.py contains example code for creating an API session.  Copy config_sample.cfg to test_config.cfg and edit th
-e api_secret and default_loc values as appropriate.
+examples dir contains example code.  Copy config_sample.cfg to test_config.cfg and edit the api_secret and default_loc values as appropriate, all example scripts will read that config.
 
 ## Security Warning
 
-For whatever reason, Weather Underground's API requires the API key to be included in the URL of every request.  If logging is enabled (as it is in test_env.py), the API key may be written to log files every time an API call occurs.
+For whatever reason, Weather Underground's API requires the API key to be included in the URL of every request.  If logging is enabled, the API key may be written to log files every time an API call occurs.
 
 Though the use of HTTPS (which this class does, don't modify base_url without a good reason to) mitigates some of the issues with putting the one and only security key into the URL, there are substantial additional risks of data leakage including the API key.  It is best to consider a WU API token at high risk of compromise and monitor its usage closely.  Avoid accessing WU API URLs via browsers to prevent having the API key available in browser URL history. 

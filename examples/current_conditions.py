@@ -1,13 +1,7 @@
-import logging
 import ConfigParser
 import argparse
 from wu_api import WUApi
 
-
-# Logging configuration.  Comment out to disable, enable
-
-log_format = '%(asctime)s : %(levelname)s : %(message)s'
-logging.basicConfig(format=log_format, filename='./out.log',level=logging.DEBUG)
 
 if __name__ == '__main__':
 
