@@ -29,4 +29,12 @@ if __name__ == '__main__':
 
     wu = WUApi(api_secret, default_loc=default_loc)
 
+    # Get current conditions and print a basic report
+
+    cond = wu.get_conditions()
+    city_name = cond['current_observation']['display_location']['city']
+    temp_f = cond['current_observation']['temp_f']
+    cond_desc = cond['current_observation']['weather']
+    print('In {0} the temperature is {1}F and the current condition is {2}'.format(city_name, temp_f, cond_desc))
+
 
