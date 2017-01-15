@@ -10,6 +10,12 @@ More information about the underlying API, as well as information about obtainin
 
 The only exteral library is requests
 
+## Installation
+
+git clone https://github.com/jasontatem/wu_api
+cd wu_api
+python setup.py install
+
 ## General Usage
 
 ### To create an API client session:
