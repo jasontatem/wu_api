@@ -33,7 +33,7 @@ class WUApi(object):
         self.language = language
         self.bestforecast_enable = bestforecast_enable
         self.api_base = base_url
-        self.build_base_url(base_url)
+        self.build_base_url()
         if not self.bestforecast_enable:
             bfc_url = '/bestfct:0'
         else:
