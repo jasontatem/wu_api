@@ -70,7 +70,7 @@ Other features with wrappers in the class:
 * Almanac (historical records)
 * Tide information
 * Travel planner (recent year averages for planned travel date range)
-* Webcams near selected location 
+* Webcams near selected location
 
 ## Example Code
 
