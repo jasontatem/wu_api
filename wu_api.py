@@ -154,17 +154,17 @@ class WUApi(object):
 
     def get_geolookup(self, location=None):
         """
-        10d hour forecast for specified location
+        Find geographical information such as city / state, postal code, lat / long, nearby PWS
         :param location: Location identifier
-        :return: Dict containing response from 'hourly' endpoint, fields can be found at https://www.wunderground.com/weather/api/d/docs?d=data/hourly10day
+        :return: Dict containing response from 'geolookup' endpoint, fields can be found at https://www.wunderground.com/weather/api/d/docs?d=data/geolookup
         """
         return self.call_wu_api('geolookup', location)
 
     def get_alerts(self, location=None):
         """
-        Find geographical information such as city / state, postal code, lat / long, nearby PWS
+        Weather alerts and special notices
         :param location: Location identifier
-        :return: Dict containing response from 'geolookup' endpoint, fields can be found at https://www.wunderground.com/weather/api/d/docs?d=data/geolookup
+        :return: Dict containing response from 'alerts' endpoint, fields can be found at https://www.wunderground.com/weather/api/d/docs?d=data/alerts
         """
         return self.call_wu_api('alerts', location)
 

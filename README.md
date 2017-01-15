@@ -36,7 +36,7 @@ Get current conditions for a different location:
 7
 ```
 
-Get historical data for June 1, 2016 for Singapore, note different names for temperature keys (tempi / tempm versus temp_f / temp_c):
+Get historical data for June 1, 2016 for Singapore, note different names for temperature keys (tempi / tempm versus temp_f / temp_c), this behavior appears to depend on the location queried:
 ```python
 >>> data = wu.get_history(location='Singapore/Singapore', hist_date='20160601')
 >>> data['history']['observations'][0]['date']
@@ -51,6 +51,16 @@ Accumulate a range of days of historical data, returns a list of objects identic
 ```python
 >>> data = wu.get_history_daterange(start_date='20160601', end_date='20160608')
 ```
+
+Other features with wrappers in the class:
+* Hourly forecasts (36 hour / 10 day)
+* Daily summary forecasts (3 day / 10 day)
+* Astronomy info (sun and moon cycles)
+* Geolookup (location and weather station info)
+* Almanac (historical records)
+* Tide information
+* Travel planner (recent year averages for planned travel date range)
+* Webcams near selected location 
 
 ## Example Code
 
