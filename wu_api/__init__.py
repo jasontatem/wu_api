@@ -1,1 +1,1 @@
-from wu_api import *
+from wu_api import WUApi

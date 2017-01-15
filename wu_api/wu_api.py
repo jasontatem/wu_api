@@ -100,7 +100,7 @@ class WUApi(object):
         """
         return self.call_wu_api('history_{0}'.format(hist_date), location)
 
-    def istory_daterange(self, location=None, start_date=yesterday_yymmdd(), end_date=today_yyyymmdd()):
+    def history_daterange(self, location=None, start_date=yesterday_yymmdd(), end_date=today_yyyymmdd()):
         """
         Historical conditions for specified location and date range. Effectively an automated
         way to make multiple history() calls. Results are accumulated in a list, each
