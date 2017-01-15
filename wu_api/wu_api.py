@@ -83,7 +83,7 @@ class WUApi(object):
         logging.debug('Calling WU API with URL: {0}'.format(full_url))
         return requests.get(full_url).json()
 
-    def get_conditions(self, location=None):
+    def conditions(self, location=None):
         """
         Current conditions for specified location
         :param location: Location identifier
@@ -91,7 +91,7 @@ class WUApi(object):
         """
         return self.call_wu_api('conditions', location)
 
-    def get_history(self, location=None, hist_date=today_yyyymmdd()):
+    def history(self, location=None, hist_date=today_yyyymmdd()):
         """
         Historical conditions for specified location and date
         :param location: Location identifier
@@ -100,11 +100,11 @@ class WUApi(object):
         """
         return self.call_wu_api('history_{0}'.format(hist_date), location)
 
-    def get_history_daterange(self, location=None, start_date=yesterday_yymmdd(), end_date=today_yyyymmdd()):
+    def istory_daterange(self, location=None, start_date=yesterday_yymmdd(), end_date=today_yyyymmdd()):
         """
         Historical conditions for specified location and date range. Effectively an automated
-        way to make multiple get_history() calls. Results are accumulated in a list, each
-        list entry is the same as a get_history() result.
+        way to make multiple history() calls. Results are accumulated in a list, each
+        list entry is the same as a history() result.
         :param location: Location identifier
         :param start_date: Start date in yyyymmdd format, defaults to yesterdays's date
         :param end_date: Historical date in yyyymmdd format, defaults to today's date
@@ -116,11 +116,11 @@ class WUApi(object):
         results = list()
         while query_dt <= end_dt:
             query_yyyymmdd = query_dt.strftime('%Y%m%d')
-            results.append(self.get_history(location, query_yyyymmdd))
+            results.append(self.history(location, query_yyyymmdd))
             query_dt = query_dt + datetime.timedelta(days=1)
         return results
 
-    def get_hourly_forecast_36h(self, location=None):
+    def hourly_forecast_36h(self, location=None):
         """
         36h hourly forecast for specified location
         :param location: Location identifier
@@ -128,7 +128,7 @@ class WUApi(object):
         """
         return self.call_wu_api('hourly', location)
 
-    def get_hourly_forecast_10d(self, location=None):
+    def hourly_forecast_10d(self, location=None):
         """
         10d hourlu forecast for specified location
         :param location: Location identifier
@@ -136,7 +136,7 @@ class WUApi(object):
         """
         return self.call_wu_api('hourly10day', location)
 
-    def get_forecast_3d(self, location=None):
+    def forecast_3d(self, location=None):
         """
         3d daily forecast for specified location
         :param location: Location identifier
@@ -144,7 +144,7 @@ class WUApi(object):
         """
         return self.call_wu_api('forecast', location)
 
-    def get_forecast_10d(self, location=None):
+    def forecast_10d(self, location=None):
         """
         10d daily forecast for specified location
         :param location: Location identifier
@@ -152,7 +152,7 @@ class WUApi(object):
         """
         return self.call_wu_api('forecast10day', location)
 
-    def get_geolookup(self, location=None):
+    def geolookup(self, location=None):
         """
         Find geographical information such as city / state, postal code, lat / long, nearby PWS
         :param location: Location identifier
@@ -160,7 +160,7 @@ class WUApi(object):
         """
         return self.call_wu_api('geolookup', location)
 
-    def get_alerts(self, location=None):
+    def alerts(self, location=None):
         """
         Weather alerts and special notices
         :param location: Location identifier
@@ -168,7 +168,7 @@ class WUApi(object):
         """
         return self.call_wu_api('alerts', location)
 
-    def get_almanac(self, location=None):
+    def almanac(self, location=None):
         """
         Historical record high and low temperature information
         :param location: Location identifier
@@ -176,7 +176,7 @@ class WUApi(object):
         """
         return self.call_wu_api('almanac', location)
 
-    def get_astronomy(self, location=None):
+    def astronomy(self, location=None):
         """
         Astronomy information - moon cycle, sunrise / sunset times
         :param location: Location identifier
@@ -184,7 +184,7 @@ class WUApi(object):
         """
         return self.call_wu_api('astronomy', location)
 
-    def get_planner(self, location=None, start_mmdd=today_yyyymmdd()[0:4], end_mmdd=yesterday_yymmdd(delta=-30)[0:4]):
+    def planner(self, location=None, start_mmdd=today_yyyymmdd()[0:4], end_mmdd=yesterday_yymmdd(delta=-30)[0:4]):
         """
         "Travel planner" - shows historical averages for a given date range.  Start and
         end dates must not be more than 30 days apart.  A year cannot be specified.
@@ -195,7 +195,7 @@ class WUApi(object):
         """
         return self.call_wu_api('planner_{0}{1}'.format(start_mmdd, end_mmdd), location)
 
-    def get_tidal(self, location=None):
+    def tidal(self, location=None):
         """
         Tidal info such as maximum and minimum heights
         :param location: Location identifier
@@ -203,7 +203,7 @@ class WUApi(object):
         """
         return self.call_wu_api('tide', location)
 
-    def get_raw_tidal(self, location=None):
+    def raw_tidal(self, location=None):
         """
         "Raw" tidal info - streamlined for graphing purposes
         :param location: Location identifier
@@ -211,7 +211,7 @@ class WUApi(object):
         """
         return self.call_wu_api('rawtide', location)
 
-    def get_webcams(self, location=None):
+    def webcams(self, location=None):
         """
         URLs and metadata for webcams near the specified location
         :param location: Location identifier

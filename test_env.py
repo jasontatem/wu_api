@@ -31,7 +31,7 @@ if __name__ == '__main__':
 
     # Get current conditions and print a basic report
 
-    cond = wu.get_conditions()
+    cond = wu.conditions()
     city_name = cond['current_observation']['display_location']['city']
     temp_f = cond['current_observation']['temp_f']
     cond_desc = cond['current_observation']['weather']
