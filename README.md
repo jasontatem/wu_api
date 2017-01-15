@@ -12,12 +12,11 @@ The only exteral library is requests
 
 ## Installation
 
+```shell
 git clone https://github.com/jasontatem/wu_api
-
 cd wu_api
-
 python setup.py install
-
+```
 
 ## General Usage
 
